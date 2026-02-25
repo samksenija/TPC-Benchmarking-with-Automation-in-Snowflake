@@ -1,8 +1,8 @@
 import snowflake.connector
 
 conn = snowflake.connector.connect(
-    user='ksenijasam',
-    password='',
+    user='user',
+    password='password',
     account='your_account',
     warehouse='your_warehouse',
     database='your_database',
