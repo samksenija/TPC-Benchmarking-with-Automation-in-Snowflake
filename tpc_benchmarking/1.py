@@ -1,4 +1,4 @@
-import globals
+import tpc_benchmarking.globals as globals
 import snowflake.connector
 
 d = 1
