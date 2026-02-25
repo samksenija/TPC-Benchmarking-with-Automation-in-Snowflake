@@ -1,5 +1,6 @@
 import snowflake.connector
 import os
+
 from dotenv import load_dotenv
 
 load_dotenv() 
@@ -14,7 +15,20 @@ conn = snowflake.connector.connect(
 )
 
 #this is global configuration of database & schema
-database_schema = f"""
+database = f"""
         USE DATABASE SNOWFLAKE_SAMPLE_DATA;
+    """
+
+schema = f"""
         USE SCHEMA TPCH_SF100;
     """
+cursor = conn.cursor()
+
+database_definition = cursor.execute(database)
+schema_definition = cursor.execute(schema)
+
+#1.py
+d = 1
+upper_limit = 31
+
+    

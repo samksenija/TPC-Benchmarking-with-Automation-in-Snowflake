@@ -1,9 +1,11 @@
-import tpc_benchmarking.globals as globals
-import snowflake.connector
+import globals
 
-d = 1
+globals.database_definition 
+globals.schema_definition
 
-while d < 31:
+cursor = globals.conn.cursor()
+
+while globals.d < globals.upper_limit:
     query = f"""
     select
         l_returnflag,
@@ -19,7 +21,7 @@ while d < 31:
     from
         lineitem
     where
-        l_shipdate <= DATEADD(day, -{d}, '1998-12-01')
+        l_shipdate <= DATEADD(day, -{globals.d}, '1998-12-01')
     group by
         l_returnflag,
         l_linestatus
@@ -28,6 +30,6 @@ while d < 31:
         l_linestatus;
     """
 
-    cursor.execute()
+    cursor.execute(query)
 
-    d = d+1
+    globals.d = globals.d + 1
